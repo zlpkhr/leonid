@@ -1,0 +1,15 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+data
+fault_injection_logs
+.ruff_cache
+bit_flip_details.json
+detailed_statistics.json

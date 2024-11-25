@@ -1,0 +1,82 @@
+Bit Flip Analysis Report
+=======================
+
+Overall Statistics:
+Total number of bit flips analyzed: 1015000
+
+0->1:
+  Total flips: 533256 (52.5% of all flips)
+  Failures: 5487
+  Success rate: 98.97%
+
+1->0:
+  Total flips: 481744 (47.5% of all flips)
+  Failures: 4381
+  Success rate: 99.09%
+
+
+Layer-wise Impact:
+
+f7:
+  0->1: 106094 flips (53.4%)
+  1->0: 92429 flips (46.6%)
+
+f6:
+  0->1: 112201 flips (57.8%)
+  1->0: 82034 flips (42.2%)
+
+f5:
+  0->1: 87455 flips (43.2%)
+  1->0: 114955 flips (56.8%)
+
+c3:
+  0->1: 118018 flips (56.8%)
+  1->0: 89895 flips (43.2%)
+
+c1:
+  0->1: 109488 flips (51.7%)
+  1->0: 102431 flips (48.3%)
+
+Bit Position Impact:
+
+Bit 0:
+  0->1: 58973 flips (47.8%)
+  1->0: 64438 flips (52.2%)
+
+Bit 1:
+  0->1: 65372 flips (52.1%)
+  1->0: 60047 flips (47.9%)
+
+Bit 2:
+  1->0: 65156 flips (51.1%)
+  0->1: 62257 flips (48.9%)
+
+Bit 3:
+  0->1: 61610 flips (47.7%)
+  1->0: 67600 flips (52.3%)
+
+Bit 4:
+  0->1: 64111 flips (48.2%)
+  1->0: 68947 flips (51.8%)
+
+Bit 5:
+  0->1: 62403 flips (50.9%)
+  1->0: 60210 flips (49.1%)
+
+Bit 6:
+  0->1: 76308 flips (57.8%)
+  1->0: 55754 flips (42.2%)
+
+Bit 7:
+  1->0: 39592 flips (32.5%)
+  0->1: 82222 flips (67.5%)
+
+Confidence Impact:
+
+0->1:
+  Average confidence change: -0.0000
+  Maximum confidence drop: -0.1071
+
+1->0:
+  Average confidence change: -0.0000
+  Maximum confidence drop: -0.1098
