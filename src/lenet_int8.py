@@ -232,7 +232,7 @@ def main():
     print(f"Accuracy Drop: {float_accuracy - quantized_accuracy:.2f}%")
 
     # Clean up temporary file
-    Path("temp_float.pth").unlink()
+    Path("tmp/temp_float.pth").unlink()
 
 
 if __name__ == "__main__":

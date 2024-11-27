@@ -136,7 +136,7 @@ def main():
     print(f"Test Accuracy: {100. * correct / total:.2f}%")
 
     # Save model
-    torch.save(model.state_dict(), "lenet5_model.pth")
+    torch.save(model.state_dict(), "tmp/lenet5_model.pth")
 
 
 if __name__ == "__main__":

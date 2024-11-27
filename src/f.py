@@ -136,7 +136,7 @@ def run_parallel_fault_injection_campaign(
 
 def save_results(results: List[Dict], filename: str):
     """Save results to a JSON file"""
-    output_dir = Path("fault_injection_logs")
+    output_dir = Path("tmp/fault_injection_logs")
     output_dir.mkdir(exist_ok=True)
 
     with open(output_dir / filename, "w") as f:
@@ -160,7 +160,7 @@ def main():
     torch.manual_seed(42)
 
     # Check for model file
-    model_path = Path("lenet5_int8.pth")
+    model_path = Path("tmp/lenet5_int8.pth")
     if not model_path.exists():
         raise FileNotFoundError("Quantized model file not found!")
 

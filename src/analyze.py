@@ -10,7 +10,7 @@ import pandas as pd
 
 
 class FaultAnalyzer:
-    def __init__(self, log_dir: str = "fault_injection_logs"):
+    def __init__(self, log_dir: str = "tmp/fault_injection_logs"):
         self.log_dir = Path(log_dir)
         self.experiments = []
         self.metadata = {}
@@ -20,7 +20,7 @@ class FaultAnalyzer:
         if filename:
             files = [self.log_dir / filename]
         else:
-            files = list(self.log_dir.glob("fault_injection_*.json"))
+            files = list(self.log_dir.glob("tmp/fault_injection_*.json"))
 
         print(f"Found {len(files)} result files")
         for file_path in files:
@@ -129,7 +129,7 @@ class FaultAnalyzer:
             "severe_impacts": severe_impacts,
         }
 
-    def generate_report(self, output_dir: str = "fault_analysis"):
+    def generate_report(self, output_dir: str = "tmp/fault_analysis"):
         """Generate comprehensive analysis report with visualizations"""
         output_dir = Path(output_dir)
         output_dir.mkdir(exist_ok=True)

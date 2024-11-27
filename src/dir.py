@@ -85,7 +85,7 @@ def analyze_bit_flips(experiments: List[Dict]) -> Dict:
     return results
 
 
-def generate_bit_flip_report(results: Dict, output_dir: str = "bit_flip_analysis"):
+def generate_bit_flip_report(results: Dict, output_dir: str = "tmp/bit_flip_analysis"):
     """Generate comprehensive report on bit flip analysis"""
     output_dir = Path(output_dir)
     output_dir.mkdir(exist_ok=True)
@@ -233,8 +233,8 @@ def generate_bit_flip_report(results: Dict, output_dir: str = "bit_flip_analysis
 
 def main():
     # Load existing results
-    logs_dir = Path("fault_injection_logs")
-    results_files = list(logs_dir.glob("fault_injection_*.json"))
+    logs_dir = Path("tmp/fault_injection_logs")
+    results_files = list(logs_dir.glob("tmp/fault_injection_*.json"))
 
     if not results_files:
         print("No fault injection results found!")

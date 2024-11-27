@@ -8,8 +8,5 @@ wheels/
 
 # Virtual environments
 .venv
-data
-fault_injection_logs
-.ruff_cache
-bit_flip_details.json
-detailed_statistics.json
+
+tmp
