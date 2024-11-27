@@ -60,7 +60,7 @@ class FaultInjectionRecord:
 class FaultInjectionLogger:
     """Logger for fault injection experiments"""
 
-    def __init__(self, output_dir: str = "fault_injection_logs"):
+    def __init__(self, output_dir: str = "tmp/fault_injection_logs"):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(exist_ok=True)
         self.current_log = []

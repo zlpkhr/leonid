@@ -28,7 +28,7 @@ def load_test_data(batch_size=1):
     )
 
     test_dataset = torchvision.datasets.MNIST(
-        root="./data", train=False, download=True, transform=transform
+        root="tmp/data", train=False, download=True, transform=transform
     )
     return DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
@@ -167,7 +167,7 @@ def main():
     # Run parallel campaign
     run_parallel_fault_injection_campaign(
         model_path=str(model_path),
-        num_experiments=10000,  # Adjust as needed
+        num_experiments=100,  # Adjust as needed
         save_interval=50,
         num_processes=None,  # Will use CPU count - 1
     )

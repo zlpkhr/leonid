@@ -20,7 +20,7 @@ class FaultAnalyzer:
         if filename:
             files = [self.log_dir / filename]
         else:
-            files = list(self.log_dir.glob("tmp/fault_injection_*.json"))
+            files = list(self.log_dir.glob("fault_injection_*.json"))
 
         print(f"Found {len(files)} result files")
         for file_path in files:

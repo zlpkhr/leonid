@@ -234,7 +234,7 @@ def generate_bit_flip_report(results: Dict, output_dir: str = "tmp/bit_flip_anal
 def main():
     # Load existing results
     logs_dir = Path("tmp/fault_injection_logs")
-    results_files = list(logs_dir.glob("tmp/fault_injection_*.json"))
+    results_files = list(logs_dir.glob("fault_injection_*.json"))
 
     if not results_files:
         print("No fault injection results found!")

@@ -20,7 +20,7 @@ def evaluate_model(model, device="cpu"):
     )
 
     test_dataset = torchvision.datasets.MNIST(
-        root="./data", train=False, download=True, transform=transform
+        root="tmp/data", train=False, download=True, transform=transform
     )
     test_loader = DataLoader(test_dataset, batch_size=32)
 
@@ -191,7 +191,7 @@ class QuantizedLeNet5(nn.Module):
 
 def main():
     # Load the trained model
-    model_path = Path("lenet5_model.pth")
+    model_path = Path("tmp/lenet5_model.pth")
     if not model_path.exists():
         raise FileNotFoundError("Model file not found. Please train the model first.")
 
@@ -201,8 +201,8 @@ def main():
     model.eval()
 
     # Print initial model size
-    torch.save(model.state_dict(), "temp_float.pth")
-    float_size = Path("temp_float.pth").stat().st_size / (1024 * 1024)  # Size in MB
+    torch.save(model.state_dict(), "tmp/temp_float.pth")
+    float_size = Path("tmp/temp_float.pth").stat().st_size / (1024 * 1024)  # Size in MB
     print(f"Float Model Size: {float_size:.2f} MB")
 
     # Evaluate float model
@@ -214,8 +214,8 @@ def main():
     quantized_model = QuantizedLeNet5(model)
 
     # Save quantized model with int8 weights
-    quantized_model.save_quantized("lenet5_int8.pth")
-    quantized_size = Path("lenet5_int8.pth").stat().st_size / (
+    quantized_model.save_quantized("tmp/lenet5_int8.pth")
+    quantized_size = Path("tmp/lenet5_int8.pth").stat().st_size / (
         1024 * 1024
     )  # Size in MB
 

@@ -47,7 +47,7 @@ def get_device():
         return torch.device("cpu")
 
 
-def train_model(model, train_loader, val_loader, epochs=5, device=None):
+def train_model(model, train_loader, val_loader, epochs=3, device=None):
     if device is None:
         device = get_device()
 
@@ -99,11 +99,11 @@ def main():
 
     # Load datasets
     train_dataset = torchvision.datasets.MNIST(
-        root="./data", train=True, download=True, transform=transform
+        root="tmp/data", train=True, download=True, transform=transform
     )
 
     test_dataset = torchvision.datasets.MNIST(
-        root="./data", train=False, download=True, transform=transform
+        root="tmp/data", train=False, download=True, transform=transform
     )
 
     # Create validation split
@@ -119,7 +119,7 @@ def main():
 
     # Initialize and train model
     model = LeNet5().to(device)
-    train_model(model, train_loader, val_loader, epochs=5, device=device)
+    train_model(model, train_loader, val_loader, epochs=3, device=device)
 
     # Test evaluation
     model.eval()
