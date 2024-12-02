@@ -3,9 +3,10 @@ name = "leonid"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
+    "coremltools>=8.1",
     "ruff>=0.8.1",
-    "torch>=2.5.1",
-    "torchvision>=0.20.1",
+    "torch==2.4",
+    "torchvision>=0.19.0",
 ]
 
 [dependency-groups]

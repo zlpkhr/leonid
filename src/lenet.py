@@ -6,6 +6,11 @@ import torchvision.datasets as datasets
 import torch.utils.data as data
 from torch.utils.data import DataLoader
 import torch.optim as optim
+import coremltools as ct
+from coremltools.optimize.torch.quantization import (
+    PostTrainingQuantizerConfig,
+    PostTrainingQuantizer,
+)
 
 
 class Lenet(nn.Module):
@@ -91,9 +96,9 @@ if __name__ == "__main__":
 
     train_set, val_set = data.random_split(train_set, [train_set_size, val_set_size])
 
-    train_loader = DataLoader(train_set, shuffle=True)
-    val_loader = DataLoader(val_set)
-    test_loader = DataLoader(test_set)
+    train_loader = DataLoader(train_set, shuffle=True, batch_size=32)
+    val_loader = DataLoader(val_set, batch_size=32)
+    test_loader = DataLoader(test_set, batch_size=32)
 
     model = Lenet()
     train_model(model, train_loader, val_loader)
@@ -109,3 +114,16 @@ if __name__ == "__main__":
     print(f"Test Accuracy: {100. * correct / total:.2f}%")
 
     torch.jit.script(model).save("tmp/lenet.pt")
+
+    config = PostTrainingQuantizerConfig.from_dict(
+        {
+            "global_config": {
+                "weight_dtype": "int8",
+            },
+        }
+    )
+
+    ptq = PostTrainingQuantizer(model, config)
+    quantized_model = ptq.compress()
+
+    torch.jit.script(quantized_model).save("tmp/lenet_int8.pt")
