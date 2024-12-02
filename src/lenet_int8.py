@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 
 # Import LeNet5 class from your model file
-from lenet import LeNet5
+from lenet import Lenet
 
 
 def evaluate_model(model, device="cpu"):
@@ -196,7 +196,7 @@ def main():
         raise FileNotFoundError("Model file not found. Please train the model first.")
 
     # Initialize model and load weights
-    model = LeNet5()
+    model = Lenet()
     model.load_state_dict(torch.load(model_path, weights_only=True))
     model.eval()
 

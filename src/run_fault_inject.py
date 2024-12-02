@@ -13,7 +13,7 @@ import os
 import json
 
 # Import necessary classes
-from lenet import LeNet5
+from lenet import Lenet
 from lenet_int8 import QuantizedLeNet5
 from fault_injection import FaultInjectionLeNet5, random_fault_parameters
 
@@ -38,7 +38,7 @@ def run_single_experiment(args: Tuple) -> Dict:
     test_loader, model_path, layer_names, experiment_id = args
 
     # Load model in each process to avoid sharing issues
-    original_model = LeNet5()
+    original_model = Lenet()
     saved_dict = torch.load(model_path, weights_only=True)
     quantized_model = QuantizedLeNet5(original_model)
     quantized_model.scales = saved_dict["scales"]
